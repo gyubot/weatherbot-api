@@ -1,0 +1,37 @@
+package weatherbot.greeting
+
+import org.junit.jupiter.api.Assertions.assertEquals
+import org.junit.jupiter.api.Test
+import weatherbot.WeatherCode
+
+class GreetingTypeCompositeCheckerTest {
+    @Test
+    fun check_함수는_올바른_값을_반환한다() {
+        // Arrange
+        val currentWeather = WeatherHistoricalFixture.create(
+            code = WeatherCode.RAIN, rain1h = 10,
+        )
+        val sut = GreetingTypeCompositeChecker()
+
+        // Act
+        val actual = sut.check(currentWeather)
+
+        // Assert
+        assertEquals(actual, GreetingType.TYPE_3)
+    }
+
+    @Test
+    fun check_함수는_TYPE99를_반환한다() {
+        // Arrange
+        val currentWeather = WeatherHistoricalFixture.create(
+            code = WeatherCode.SUNNY, rain1h = 10,
+        )
+        val sut = GreetingTypeCompositeChecker()
+
+        // Act
+        val actual = sut.check(currentWeather)
+
+        // Assert
+        assertEquals(actual, GreetingType.TYPE_99)
+    }
+}
