@@ -15,13 +15,14 @@ class HeadsUpTextGeneratorTest {
     fun generate_함수는_올바른_문구를_반환한다(forecasts: List<WeatherForecast>, expected: String) {
         // Arrange
         val weather = Weather(historicals = emptyList(), forecasts = forecasts)
-        val sut = HeadsUpTextGenerator()
+        val checker = HeadsUpTypeCompositeChecker()
+        val sut = HeadsUpTextGenerator(checker)
 
         // Act
         val actual = sut.generate(weather)
 
         // Assert
-        assertEquals(actual, expected)
+        assertEquals(expected, actual)
     }
 
     companion object {
