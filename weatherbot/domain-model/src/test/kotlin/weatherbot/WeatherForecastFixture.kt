@@ -8,7 +8,6 @@ class WeatherForecastFixture {
             code: WeatherCode = WeatherCode.SUNNY,
         ): WeatherForecast = WeatherForecast(
             hourOffset = hourOffset,
-            timestamp = timestamp,
             code = code,
         )
     }
