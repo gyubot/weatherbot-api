@@ -6,6 +6,8 @@ import reactor.core.publisher.Flux
 import reactor.core.publisher.Mono
 import weatherbot.Weather
 import weatherbot.WeatherReader
+import java.time.Duration
+import java.util.concurrent.TimeoutException
 
 class WeatherApiReader(
     private val baseUrl: String,
@@ -15,21 +17,28 @@ class WeatherApiReader(
         .baseUrl(baseUrl)
         .build()
 
-    override fun getWeather(lat: Double, lon: Double): Weather {
+    override fun getWeather(lat: Float, lon: Float): Weather {
         val weatherMonoResponses =
             (-24..-6 step 6).map { getHistorical(lat, lon, hourOffset = it) } +
                 getCurrent(lat, lon) +
                 (6..48 step 6).map { getForecast(lat, lon, hourOffset = it) }
 
-        val weatherResponses = Flux.merge(weatherMonoResponses).collectList().block()!!.sortedBy { it.hourOffset }
+        try {
+            val weatherResponses =
+                Flux.merge(weatherMonoResponses).collectList()
+                    .block(Duration.ofMillis(1500))!! // 1.5초 초과 timeout 처리
+                    .sortedBy { it.hourOffset }
 
-        return Weather(
-            historicals = weatherResponses.filter { it.hourOffset <= 0 }.map { it.toHistoricalEntity() },
-            forecasts = weatherResponses.filter { it.hourOffset > 0 }.map { it.toForecastEntity() },
-        )
+            return Weather(
+                historicals = weatherResponses.filter { it.hourOffset <= 0 }.map { it.toHistoricalEntity() },
+                forecasts = weatherResponses.filter { it.hourOffset > 0 }.map { it.toForecastEntity() },
+            )
+        } catch (e: RuntimeException) {
+            throw TimeoutException()
+        }
     }
 
-    private fun getCurrent(lat: Double, lon: Double): Mono<WeatherResponse> = webClient.get()
+    private fun getCurrent(lat: Float, lon: Float): Mono<WeatherResponse> = webClient.get()
         .uri { builder: UriBuilder ->
             builder.path("/current")
                 .queryParam("lat", lat)
@@ -41,7 +50,7 @@ class WeatherApiReader(
         .bodyToMono(Historical::class.java)
         .map { it.toWeatherResponse(0) }
 
-    private fun getHistorical(lat: Double, lon: Double, hourOffset: Int): Mono<WeatherResponse> = webClient.get()
+    private fun getHistorical(lat: Float, lon: Float, hourOffset: Int): Mono<WeatherResponse> = webClient.get()
         .uri { builder: UriBuilder ->
             builder.path("/historical/hourly")
                 .queryParam("lat", lat)
@@ -54,7 +63,7 @@ class WeatherApiReader(
         .bodyToMono(Historical::class.java)
         .map { it.toWeatherResponse(hourOffset) }
 
-    private fun getForecast(lat: Double, lon: Double, hourOffset: Int): Mono<WeatherResponse> = webClient.get()
+    private fun getForecast(lat: Float, lon: Float, hourOffset: Int): Mono<WeatherResponse> = webClient.get()
         .uri { builder: UriBuilder ->
             builder.path("/forecast/hourly")
                 .queryParam("lat", lat)

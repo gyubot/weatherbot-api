@@ -6,7 +6,7 @@ class WeatherSummaryService(
     private val headsUpTextGenerator: WeatherTextGenerator,
     private val weatherReader: WeatherReader,
 ) {
-    fun getSummaryResponse(lat: Double, lon: Double): WeatherSummaryResponse {
+    fun getSummaryResponse(lat: Float, lon: Float): WeatherSummaryResponse {
         val weather = weatherReader.getWeather(lat = lat, lon = lon)
         return WeatherSummaryResponse(
             summary = WeatherSummariesResponse(

@@ -1,7 +1,7 @@
 package weatherbot
 
 class WeatherDummyReader : WeatherReader {
-    override fun getWeather(lat: Double, lon: Double): Weather {
+    override fun getWeather(lat: Float, lon: Float): Weather {
         return Weather(
             historicals = listOf(
                 WeatherHistorical(

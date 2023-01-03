@@ -1,5 +1,5 @@
 package weatherbot
 
 interface WeatherReader {
-    fun getWeather(lat: Double, lon: Double): Weather
+    fun getWeather(lat: Float, lon: Float): Weather
 }
