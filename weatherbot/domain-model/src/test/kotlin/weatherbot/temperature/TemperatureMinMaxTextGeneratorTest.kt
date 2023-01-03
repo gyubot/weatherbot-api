@@ -2,7 +2,7 @@ package weatherbot.temperature
 
 import org.junit.jupiter.api.Assertions.assertEquals
 import org.junit.jupiter.api.Test
-import weatherbot.greeting.WeatherHistoricalFixture
+import weatherbot.WeatherHistoricalFixture
 
 class TemperatureMinMaxTextGeneratorTest {
 

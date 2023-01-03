@@ -4,6 +4,7 @@ import org.junit.jupiter.api.Assertions.assertEquals
 import org.junit.jupiter.api.Test
 import weatherbot.Weather
 import weatherbot.WeatherCode
+import weatherbot.WeatherHistoricalFixture
 
 class GreetingTextGeneratorTest {
     @Test
@@ -12,7 +13,8 @@ class GreetingTextGeneratorTest {
         val weather =
             Weather(
                 historicals =
-                listOf(WeatherHistoricalFixture.create(code = WeatherCode.RAIN, rain1h = 999))
+                listOf(WeatherHistoricalFixture.create(code = WeatherCode.RAIN, rain1h = 999)),
+                forecasts = emptyList(),
             )
         val typeChecker = GreetingTypeCompositeChecker()
         val sut = GreetingTextGenerator(typeChecker)

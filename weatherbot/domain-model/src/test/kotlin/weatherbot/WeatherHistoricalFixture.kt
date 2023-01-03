@@ -1,7 +1,4 @@
-package weatherbot.greeting
-
-import weatherbot.WeatherCode
-import weatherbot.WeatherHistorical
+package weatherbot
 
 class WeatherHistoricalFixture {
     companion object {
