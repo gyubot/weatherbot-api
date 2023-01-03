@@ -12,24 +12,24 @@ class TemperatureTextGeneratorTest {
         val weather = Weather(
             historicals = listOf(
                 WeatherHistoricalFixture.create(
-                    hourOffset = 0,
-                    temp = 2
-                ),
-                WeatherHistoricalFixture.create(
-                    hourOffset = -6,
-                    temp = 30
-                ),
-                WeatherHistoricalFixture.create(
-                    hourOffset = -12,
-                    temp = -12
+                    hourOffset = -24,
+                    temp = -9
                 ),
                 WeatherHistoricalFixture.create(
                     hourOffset = -18,
                     temp = -5
                 ),
                 WeatherHistoricalFixture.create(
-                    hourOffset = -24,
-                    temp = -9
+                    hourOffset = -12,
+                    temp = -12
+                ),
+                WeatherHistoricalFixture.create(
+                    hourOffset = -6,
+                    temp = 30
+                ),
+                WeatherHistoricalFixture.create(
+                    hourOffset = 0,
+                    temp = 2
                 ),
             ),
             forecasts = listOf()
