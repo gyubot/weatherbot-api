@@ -1,15 +1,16 @@
 package weatherbot.configuration
 
+import org.springframework.beans.factory.annotation.Value
 import org.springframework.context.annotation.Bean
 import org.springframework.context.annotation.Configuration
 import org.springframework.web.servlet.config.annotation.CorsRegistry
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer
-import weatherbot.WeatherDummyReader
 import weatherbot.WeatherSummaryService
 import weatherbot.greeting.GreetingTextGenerator
 import weatherbot.greeting.GreetingTypeCompositeChecker
 import weatherbot.heads_up.HeadsUpTextGenerator
 import weatherbot.heads_up.HeadsUpTypeCompositeChecker
+import weatherbot.repository.weather_api.WeatherApiReader
 import weatherbot.temperature.TemperatureTextGenerator
 
 @Configuration
@@ -22,7 +23,10 @@ class BeanConfiguration {
     }
 
     @Bean
-    fun weatherSummaryService(): WeatherSummaryService = WeatherSummaryService(
+    fun weatherSummaryService(
+        @Value("\${weatherApi.baseUrl}") baseUrl: String,
+        @Value("\${weatherApi.apiKey}") apiKey: String,
+    ): WeatherSummaryService = WeatherSummaryService(
         greetingTextGenerator = GreetingTextGenerator(
             GreetingTypeCompositeChecker()
         ),
@@ -30,6 +34,9 @@ class BeanConfiguration {
         headsUpTextGenerator = HeadsUpTextGenerator(
             HeadsUpTypeCompositeChecker()
         ),
-        weatherReader = WeatherDummyReader()
+        weatherReader = WeatherApiReader(
+            baseUrl = baseUrl,
+            apiKey = apiKey,
+        )
     )
 }

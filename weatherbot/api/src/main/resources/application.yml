@@ -1,0 +1,3 @@
+weatherApi:
+    baseUrl: https://thirdparty-weather-api-v2.droom.workers.dev
+    apiKey: CMRJW4WT7V3QA5AOIGPBC

@@ -1,5 +1,5 @@
 package weatherbot
 
 enum class WeatherCode {
-    SUNNY, CLOUDY, RAIN, SNOW,
+    SUNNY, CLOUDY, RAIN, SNOW, UNKNOWN,
 }
