@@ -1,4 +1,4 @@
-package weatherbot.templature
+package weatherbot.temperature
 
 import org.junit.jupiter.api.Assertions.assertEquals
 import org.junit.jupiter.params.ParameterizedTest
@@ -7,7 +7,7 @@ import org.junit.jupiter.params.provider.MethodSource
 import weatherbot.WeatherHistorical
 import weatherbot.greeting.WeatherHistoricalFixture
 
-class TemplatureTextGeneratorTest {
+class TemperatureTextGeneratorTest {
     @ParameterizedTest
     @MethodSource("getWeatherDatas")
     fun generate_함수는_24시간전_날씨와_현재_날씨를_바탕으로_올바른_문구를_반환한다(
@@ -16,7 +16,7 @@ class TemplatureTextGeneratorTest {
         text: String
     ) {
         // Arrange
-        val sut = TemplatureDiffTextGenerator()
+        val sut = TemperatureDiffTextGenerator()
 
         // Act
         val actual = sut.generate(current = current, before = before24h)
