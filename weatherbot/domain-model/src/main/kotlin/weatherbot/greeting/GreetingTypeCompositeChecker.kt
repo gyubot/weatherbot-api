@@ -7,9 +7,9 @@ class GreetingTypeCompositeChecker : GreetingTypeChecker {
         Type0(), Type1(), Type2(), Type3(), Type4(), Type5(), Type6(),
     )
 
-    override fun check(weatherCurrent: WeatherHistorical): GreetingType? {
+    override fun getType(weatherCurrent: WeatherHistorical): GreetingType? {
         greetingTypeCheckers.forEach {
-            val type = it.check(weatherCurrent)
+            val type = it.getType(weatherCurrent)
             if (type != null) {
                 return type
             }
