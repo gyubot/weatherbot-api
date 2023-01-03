@@ -26,6 +26,6 @@ class TemperatureMinMaxTextGeneratorTest {
         val actual = sut.generate(weathers)
 
         // Assert
-        assertEquals(actual, "최고기온은 30도, 최저기온은 -5도 입니다.")
+        assertEquals("최고기온은 30도, 최저기온은 -5도 입니다.", actual)
     }
 }

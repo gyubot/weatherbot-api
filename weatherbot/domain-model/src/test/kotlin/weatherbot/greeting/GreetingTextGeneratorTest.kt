@@ -23,7 +23,7 @@ class GreetingTextGeneratorTest {
         val actual = sut.generate(weather)
 
         // Assert
-        assertEquals(actual, "폭우가 내리고 있어요.")
+        assertEquals("폭우가 내리고 있어요.", actual)
     }
 }
 

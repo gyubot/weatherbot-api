@@ -20,7 +20,7 @@ class GreetingTypeCheckerTest {
         val actual = sut.check(weatherCurrent)
 
         // Assert
-        assertEquals(actual, GreetingType.TYPE_0)
+        assertEquals(GreetingType.TYPE_0, actual)
     }
 
     @Test
@@ -48,7 +48,7 @@ class GreetingTypeCheckerTest {
         val actual = sut.check(weatherCurrent)
 
         // Assert
-        assertEquals(actual, GreetingType.TYPE_1)
+        assertEquals(GreetingType.TYPE_1, actual)
     }
 
     @Test
@@ -77,7 +77,7 @@ class GreetingTypeCheckerTest {
         val actual = sut.check(weatherCurrent)
 
         // Assert
-        assertEquals(actual, GreetingType.TYPE_2)
+        assertEquals(GreetingType.TYPE_2, actual)
     }
 
     @Test
@@ -105,7 +105,7 @@ class GreetingTypeCheckerTest {
         val actual = sut.check(weatherCurrent)
 
         // Assert
-        assertEquals(actual, GreetingType.TYPE_3)
+        assertEquals(GreetingType.TYPE_3, actual)
     }
 
     @Test
@@ -133,7 +133,7 @@ class GreetingTypeCheckerTest {
         val actual = sut.check(weatherCurrent)
 
         // Assert
-        assertEquals(actual, GreetingType.TYPE_4)
+        assertEquals(GreetingType.TYPE_4, actual)
     }
 
     @Test
@@ -162,7 +162,7 @@ class GreetingTypeCheckerTest {
         val actual = sut.check(weatherCurrent)
 
         // Assert
-        assertEquals(actual, GreetingType.TYPE_5)
+        assertEquals(GreetingType.TYPE_5, actual)
     }
 
     @Test
@@ -190,7 +190,7 @@ class GreetingTypeCheckerTest {
         val actual = sut.check(weatherCurrent)
 
         // Assert
-        assertEquals(actual, GreetingType.TYPE_6)
+        assertEquals(GreetingType.TYPE_6, actual)
     }
 
     @Test

@@ -22,7 +22,7 @@ class TemperatureTextGeneratorTest {
         val actual = sut.generate(current = current, before = before24h)
 
         // Assert
-        assertEquals(actual, text)
+        assertEquals(text, actual)
     }
 
 

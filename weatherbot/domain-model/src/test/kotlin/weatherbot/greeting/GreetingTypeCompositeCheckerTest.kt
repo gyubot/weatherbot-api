@@ -18,7 +18,7 @@ class GreetingTypeCompositeCheckerTest {
         val actual = sut.check(currentWeather)
 
         // Assert
-        assertEquals(actual, GreetingType.TYPE_3)
+        assertEquals(GreetingType.TYPE_3, actual)
     }
 
     @Test
@@ -33,6 +33,6 @@ class GreetingTypeCompositeCheckerTest {
         val actual = sut.check(currentWeather)
 
         // Assert
-        assertEquals(actual, GreetingType.TYPE_99)
+        assertEquals(GreetingType.TYPE_99, actual)
     }
 }
