@@ -31,66 +31,66 @@ class HeadsUpTextGeneratorTest {
             return listOf(
                 Arguments.of(
                     listOf(
-                        WeatherForecastFixture.create(code = WeatherCode.RAIN),
-                        WeatherForecastFixture.create(code = WeatherCode.RAIN),
-                        WeatherForecastFixture.create(code = WeatherCode.SNOW),
-                        WeatherForecastFixture.create(code = WeatherCode.SNOW),
-                        WeatherForecastFixture.create(code = WeatherCode.SUNNY),
-                        WeatherForecastFixture.create(code = WeatherCode.SUNNY),
-                        WeatherForecastFixture.create(code = WeatherCode.SUNNY),
-                        WeatherForecastFixture.create(code = WeatherCode.SUNNY)
+                        WeatherForecastFixture.create(hourOffset = 6, code = WeatherCode.RAIN),
+                        WeatherForecastFixture.create(hourOffset = 12, code = WeatherCode.RAIN),
+                        WeatherForecastFixture.create(hourOffset = 18, code = WeatherCode.SNOW),
+                        WeatherForecastFixture.create(hourOffset = 24, code = WeatherCode.SNOW),
+                        WeatherForecastFixture.create(hourOffset = 30, code = WeatherCode.SUNNY),
+                        WeatherForecastFixture.create(hourOffset = 36, code = WeatherCode.SUNNY),
+                        WeatherForecastFixture.create(hourOffset = 42, code = WeatherCode.SUNNY),
+                        WeatherForecastFixture.create(hourOffset = 48, code = WeatherCode.SUNNY)
                     ),
                     "내일 폭설이 내릴 수도 있으니 외출 시 주의하세요."
                 ),
                 Arguments.of(
                     listOf(
-                        WeatherForecastFixture.create(code = WeatherCode.RAIN),
-                        WeatherForecastFixture.create(code = WeatherCode.RAIN),
-                        WeatherForecastFixture.create(code = WeatherCode.SUNNY),
-                        WeatherForecastFixture.create(code = WeatherCode.SNOW),
-                        WeatherForecastFixture.create(code = WeatherCode.SUNNY),
-                        WeatherForecastFixture.create(code = WeatherCode.SNOW),
-                        WeatherForecastFixture.create(code = WeatherCode.SUNNY),
-                        WeatherForecastFixture.create(code = WeatherCode.SUNNY)
+                        WeatherForecastFixture.create(hourOffset = 6, code = WeatherCode.RAIN),
+                        WeatherForecastFixture.create(hourOffset = 12, code = WeatherCode.RAIN),
+                        WeatherForecastFixture.create(hourOffset = 18, code = WeatherCode.SUNNY),
+                        WeatherForecastFixture.create(hourOffset = 24, code = WeatherCode.SNOW),
+                        WeatherForecastFixture.create(hourOffset = 30, code = WeatherCode.SUNNY),
+                        WeatherForecastFixture.create(hourOffset = 36, code = WeatherCode.SNOW),
+                        WeatherForecastFixture.create(hourOffset = 42, code = WeatherCode.SUNNY),
+                        WeatherForecastFixture.create(hourOffset = 48, code = WeatherCode.SUNNY)
                     ),
                     "눈이 내릴 예정이니 외출 시 주의하세요."
                 ),
                 Arguments.of(
                     listOf(
-                        WeatherForecastFixture.create(code = WeatherCode.SUNNY),
-                        WeatherForecastFixture.create(code = WeatherCode.SUNNY),
-                        WeatherForecastFixture.create(code = WeatherCode.RAIN),
-                        WeatherForecastFixture.create(code = WeatherCode.RAIN),
-                        WeatherForecastFixture.create(code = WeatherCode.SUNNY),
-                        WeatherForecastFixture.create(code = WeatherCode.SUNNY),
-                        WeatherForecastFixture.create(code = WeatherCode.SUNNY),
-                        WeatherForecastFixture.create(code = WeatherCode.SUNNY)
+                        WeatherForecastFixture.create(hourOffset = 6, code = WeatherCode.SUNNY),
+                        WeatherForecastFixture.create(hourOffset = 12, code = WeatherCode.SUNNY),
+                        WeatherForecastFixture.create(hourOffset = 18, code = WeatherCode.RAIN),
+                        WeatherForecastFixture.create(hourOffset = 24, code = WeatherCode.RAIN),
+                        WeatherForecastFixture.create(hourOffset = 30, code = WeatherCode.SUNNY),
+                        WeatherForecastFixture.create(hourOffset = 36, code = WeatherCode.SUNNY),
+                        WeatherForecastFixture.create(hourOffset = 42, code = WeatherCode.SUNNY),
+                        WeatherForecastFixture.create(hourOffset = 48, code = WeatherCode.SUNNY)
                     ),
                     "폭우가 내릴 예정이에요. 우산을 미리 챙겨두세요."
                 ),
                 Arguments.of(
                     listOf(
-                        WeatherForecastFixture.create(code = WeatherCode.SUNNY),
-                        WeatherForecastFixture.create(code = WeatherCode.SUNNY),
-                        WeatherForecastFixture.create(code = WeatherCode.SUNNY),
-                        WeatherForecastFixture.create(code = WeatherCode.SUNNY),
-                        WeatherForecastFixture.create(code = WeatherCode.SUNNY),
-                        WeatherForecastFixture.create(code = WeatherCode.RAIN),
-                        WeatherForecastFixture.create(code = WeatherCode.SUNNY),
-                        WeatherForecastFixture.create(code = WeatherCode.RAIN)
+                        WeatherForecastFixture.create(hourOffset = 6, code = WeatherCode.SUNNY),
+                        WeatherForecastFixture.create(hourOffset = 12, code = WeatherCode.SUNNY),
+                        WeatherForecastFixture.create(hourOffset = 18, code = WeatherCode.SUNNY),
+                        WeatherForecastFixture.create(hourOffset = 24, code = WeatherCode.SUNNY),
+                        WeatherForecastFixture.create(hourOffset = 30, code = WeatherCode.SUNNY),
+                        WeatherForecastFixture.create(hourOffset = 36, code = WeatherCode.RAIN),
+                        WeatherForecastFixture.create(hourOffset = 42, code = WeatherCode.SUNNY),
+                        WeatherForecastFixture.create(hourOffset = 48, code = WeatherCode.RAIN)
                     ),
                     "며칠동안 비 소식이 있어요."
                 ),
                 Arguments.of(
                     listOf(
-                        WeatherForecastFixture.create(code = WeatherCode.RAIN),
-                        WeatherForecastFixture.create(code = WeatherCode.SNOW),
-                        WeatherForecastFixture.create(code = WeatherCode.SUNNY),
-                        WeatherForecastFixture.create(code = WeatherCode.SUNNY),
-                        WeatherForecastFixture.create(code = WeatherCode.SUNNY),
-                        WeatherForecastFixture.create(code = WeatherCode.SUNNY),
-                        WeatherForecastFixture.create(code = WeatherCode.SUNNY),
-                        WeatherForecastFixture.create(code = WeatherCode.SUNNY)
+                        WeatherForecastFixture.create(hourOffset = 6, code = WeatherCode.RAIN),
+                        WeatherForecastFixture.create(hourOffset = 12, code = WeatherCode.SNOW),
+                        WeatherForecastFixture.create(hourOffset = 18, code = WeatherCode.SUNNY),
+                        WeatherForecastFixture.create(hourOffset = 24, code = WeatherCode.SUNNY),
+                        WeatherForecastFixture.create(hourOffset = 30, code = WeatherCode.SUNNY),
+                        WeatherForecastFixture.create(hourOffset = 36, code = WeatherCode.SUNNY),
+                        WeatherForecastFixture.create(hourOffset = 42, code = WeatherCode.SUNNY),
+                        WeatherForecastFixture.create(hourOffset = 48, code = WeatherCode.SUNNY)
                     ),
                     "날씨는 대체로 평온할 예정이에요."
                 ),
