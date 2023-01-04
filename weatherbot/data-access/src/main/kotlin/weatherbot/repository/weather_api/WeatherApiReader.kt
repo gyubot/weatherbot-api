@@ -7,7 +7,6 @@ import reactor.core.publisher.Mono
 import weatherbot.Weather
 import weatherbot.WeatherReader
 import java.time.Duration
-import java.util.concurrent.TimeoutException
 
 class WeatherApiReader(
     private val baseUrl: String,
@@ -23,19 +22,16 @@ class WeatherApiReader(
                 getCurrent(lat, lon) +
                 (6..48 step 6).map { getForecast(lat, lon, hourOffset = it) }
 
-        try {
-            val weatherResponses =
-                Flux.merge(weatherMonoResponses).collectList()
-                    .block(Duration.ofMillis(1500))!! // 1.5초 초과 timeout 처리
-                    .sortedBy { it.hourOffset }
+        val weatherResponses =
+            Flux.merge(weatherMonoResponses).collectList()
+                .timeout(Duration.ofMillis(1500)) // 1.5초 초과 timeout 처리
+                .block()!!
+                .sortedBy { it.hourOffset }
 
-            return Weather(
-                historicals = weatherResponses.filter { it.hourOffset <= 0 }.map { it.toHistoricalEntity() },
-                forecasts = weatherResponses.filter { it.hourOffset > 0 }.map { it.toForecastEntity() },
-            )
-        } catch (e: RuntimeException) {
-            throw TimeoutException()
-        }
+        return Weather(
+            historicals = weatherResponses.filter { it.hourOffset <= 0 }.map { it.toHistoricalEntity() },
+            forecasts = weatherResponses.filter { it.hourOffset > 0 }.map { it.toForecastEntity() },
+        )
     }
 
     private fun getCurrent(lat: Float, lon: Float): Mono<WeatherResponse> = webClient.get()
