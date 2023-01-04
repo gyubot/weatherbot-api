@@ -10,5 +10,5 @@ enum class GreetingType(
     TYPE_4(text = "날씨가 약간은 칙칙해요."),
     TYPE_5(text = "따사로운 햇살을 맞으세요."),
     TYPE_6(text = "날이 참 춥네요."),
-    TYPE_99(text = "날씨가 참 맑습니다."),
+    TYPE_OTHER(text = "날씨가 참 맑습니다."),
 }

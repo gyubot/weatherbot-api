@@ -14,6 +14,6 @@ class GreetingTypeCompositeChecker : GreetingTypeChecker {
                 return type
             }
         }
-        return GreetingType.TYPE_99
+        return GreetingType.TYPE_OTHER
     }
 }
